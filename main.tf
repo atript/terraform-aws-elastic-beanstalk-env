@@ -576,6 +576,21 @@ resource "aws_elastic_beanstalk_environment" "default" {
     value     = "${var.ssh_listener_enabled}"
   }
   setting {
+    namespace = "aws:elb:listener:51678"
+    name      = "ListenerProtocol"
+    value     = "TCP"
+  }
+  setting {
+    namespace = "aws:elb:listener:51678"
+    name      = "InstancePort"
+    value     = "51678"
+  }
+  setting {
+    namespace = "aws:elb:listener:51678"
+    name      = "ListenerEnabled"
+    value     = "true"
+  }
+  setting {
     namespace = "aws:elb:policies"
     name      = "ConnectionSettingIdleTimeout"
     value     = "${var.ssh_listener_enabled == "true" ? "3600" : "60"}"

@@ -700,21 +700,6 @@ resource "aws_elastic_beanstalk_environment" "default" {
     name      = "InstanceRefreshEnabled"
     value     = "${var.instance_refresh_enabled}"
   }
-  setting {
-    namespace = "aws:elasticbeanstalk:container:nodejs"
-    name      = "NodeVersion"
-    value     = "${var.nodejs_version}"
-  }
-  setting {
-    namespace = "aws:elasticbeanstalk:container:nodejs"
-    name      = "NodeCommand"
-    value     = "${var.nodejs_command}"
-  }
-  setting {
-    namespace = "aws:elasticbeanstalk:container:nodejs"
-    name      = "ProxyServer"
-    value     = "${var.nodejs_proxy}"
-  }
   ###===================== Application ENV vars ======================###
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"

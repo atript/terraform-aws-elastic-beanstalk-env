@@ -211,6 +211,7 @@ data "aws_iam_policy_document" "default" {
       "ecs:DeleteCluster",
       "ecs:DescribeClusters",
       "ecs:RegisterTaskDefinition",
+      "ecs:RegisterContainerInstance",
       "elasticbeanstalk:*",
       "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
       "elasticloadbalancing:ConfigureHealthCheck",
@@ -338,7 +339,8 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:ec2:vpc"
     name      = "Subnets"
-    value     = "${join(",", var.private_subnets)}"
+    // value     = "${join(",", var.private_subnets)}"
+    value     = "${join(",", var.public_subnets)}"
   }
 
   setting {

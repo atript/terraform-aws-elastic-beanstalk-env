@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "ec2" {
 
     principals {
       type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["ec2.amazonaws.com", "ecs.amazonaws.com", "ecr.amazonaws.com"]
     }
 
     effect = "Allow"

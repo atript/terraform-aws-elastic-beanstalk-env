@@ -457,8 +457,9 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SecurityGroups"
-    value     = "${var.security_groups[0]}"
+    value     = "${join(",", var.security_groups)}"
   }
+
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SSHSourceRestriction"

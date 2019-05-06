@@ -1040,12 +1040,3 @@ resource "aws_s3_bucket" "elb_logs" {
   policy        = "${data.aws_iam_policy_document.elb_logs.json}"
 }
 
-module "tld" {
-  source    = "git::https://github.com/cloudposse/terraform-aws-route53-cluster-hostname.git?ref=tags/0.2.5"
-  namespace = "${var.namespace}"
-  name      = "${var.stage == "prod"?var.name: join("-", list(var.stage, "app"))}"
-  stage     = "${var.stage}"
-  zone_id   = "${var.zone_id}"
-  records   = ["${aws_elastic_beanstalk_environment.default.cname}"]
-  enabled   = "${length(var.zone_id) > 0 ? "true" : "false"}"
-}

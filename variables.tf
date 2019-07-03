@@ -376,8 +376,3 @@ variable "elb_scheme" {
   default     = "public"
   description = "Specify `internal` if you want to create an internal load balancer in your Amazon VPC so that your Elastic Beanstalk application cannot be accessed from outside your Amazon VPC"
 }
-
-variable "enable_logs" {
-  default     = false
-  description = "Create logs bucket for elb environment"
-}

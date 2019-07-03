@@ -603,7 +603,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:elbv2:loadbalancer"
     name      = "AccessLogsS3Bucket"
-    value     = "${var.enable_logs == ? aws_s3_bucket.elb_logs.id : ""}"
+    value     = "${var.enable_logs == true ? aws_s3_bucket.elb_logs.id : ""}"
   }
   setting {
     namespace = "aws:elbv2:loadbalancer"

@@ -603,7 +603,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
   setting {
     namespace = "aws:elbv2:loadbalancer"
     name      = "AccessLogsS3Bucket"
-    value     = "${aws_s3_bucket.elb_logs.id}"
+    value     = "${var.enable_logs === ? aws_s3_bucket.elb_logs.id : ""}"
   }
   setting {
     namespace = "aws:elbv2:loadbalancer"
@@ -1034,7 +1034,7 @@ data "aws_iam_policy_document" "elb_logs" {
 }
 
 resource "aws_s3_bucket" "elb_logs" {
-  count = "${var.enable_logs == true ? 1 : 0}"
+  count = "${var.enable_logs === true ? 1 : 0}"
   bucket        = "${module.label.id}-logs"
   acl           = "private"
   force_destroy = "${var.force_destroy}"
